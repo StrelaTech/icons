@@ -1,1 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strela Icons</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --fg:#000000;
+    --muted:#777777;
+    --line:#e0e0e0;
+    --hover:#f2f2f2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--fg);
+    padding:24px;
+  }
+  header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  header img{width:36px;height:36px;}
+  h1{font-size:22px;margin:0;font-weight:600;}
+  .subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin:0 0 20px 0;
+  }
+  .search-wrap{
+    position:relative;
+    max-width:420px;
+    margin-bottom:28px;
+  }
+  .search-wrap img{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    width:18px;
+    height:18px;
+    opacity:.7;
+  }
+  .search-wrap input{
+    width:100%;
+    padding:10px 14px 10px 38px;
+    font-size:15px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--bg);
+    color:var(--fg);
+    outline:none;
+  }
+  .search-wrap input:focus{border-color:#000;}
+  .search-wrap .clear{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    width:18px;
+    height:18px;
+    cursor:pointer;
+    opacity:.6;
+    display:none;
+  }
+  .search-wrap .clear.visible{display:block;}
 
+  h2{
+    font-size:15px;
+    font-weight:600;
+    margin:28px 0 12px;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  h2 img{width:16px;height:16px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+    gap:12px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 8px 10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    transition:background .15s;
+  }
+  .card:hover{background:var(--hover);}
+  .card img{
+    width:32px;
+    height:32px;
+    filter:grayscale(1);
+  }
+  .card span{
+    font-size:11px;
+    color:var(--muted);
+    text-align:center;
+    word-break:break-all;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  .empty{
+    color:var(--muted);
+    font-size:14px;
+    display:none;
+    margin-top:20px;
+  }
+
+  footer{
+    margin-top:40px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.8;
+  }
+  footer a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line);}
+  footer a:hover{border-color:#000;}
+  footer img{width:14px;height:14px;vertical-align:-2px;margin-right:4px;}
+  .footer-row{display:flex;align-items:center;gap:6px;}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/logo-icon.svg" alt="logo">
+  <h1>StrelaTech Icons</h1>
+</header>
+<p class="subtitle">Коллекция SVG-иконок.</p>
+
+<div class="search-wrap">
+  <img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/search-icon.svg" alt="">
+  <input type="text" id="search" placeholder="Поиск по иконкам...">
+</div>
+
+<h2><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/menu-icon.svg" alt=""> Интерфейс</h2>
+<div class="grid" data-category>
+  <!-- UI -->
+  <div class="card" data-name="menu-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/menu-icon.svg" alt=""><span>menu-icon.svg</span></div>
+  <div class="card" data-name="home-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/home-icon.svg" alt=""><span>home-icon.svg</span></div>
+  <div class="card" data-name="search-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/search-icon.svg" alt=""><span>search-icon.svg</span></div>
+  <div class="card" data-name="more-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/more-icon.svg" alt=""><span>more-icon.svg</span></div>
+  <div class="card" data-name="close-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/close-icon.svg" alt=""><span>close-icon.svg</span></div>
+  <div class="card" data-name="checkmark-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/checkmark-icon.svg" alt=""><span>checkmark-icon.svg</span></div>
+  <div class="card" data-name="plus-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/plus-icon.svg" alt=""><span>plus-icon.svg</span></div>
+  <div class="card" data-name="minus-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/minus-icon.svg" alt=""><span>minus-icon.svg</span></div>
+  <div class="card" data-name="profile-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/profile-icon.svg" alt=""><span>profile-icon.svg</span></div>
+  <div class="card" data-name="pencil-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/pencil-icon.svg" alt=""><span>pencil-icon.svg</span></div>
+  <div class="card" data-name="copy-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/copy-icon.svg" alt=""><span>copy-icon.svg</span></div>
+  <div class="card" data-name="file-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/file-icon.svg" alt=""><span>file-icon.svg</span></div>
+</div>
+
+<h2><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/play-icon.svg" alt=""> Медиа</h2>
+<div class="grid" data-category>
+  <div class="card" data-name="play-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/play-icon.svg" alt=""><span>play-icon.svg</span></div>
+  <div class="card" data-name="stop-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/stop-icon.svg" alt=""><span>stop-icon.svg</span></div>
+</div>
+
+<h2><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/github-icon.svg" alt=""> Бренды</h2>
+<div class="grid" data-category>
+  <div class="card" data-name="logo-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/logo-icon.svg" alt=""><span>logo-icon.svg</span></div>
+  <div class="card" data-name="github-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/github-icon.svg" alt=""><span>github-icon.svg</span></div>
+  <div class="card" data-name="telegram-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/telegram-icon.svg" alt=""><span>telegram-icon.svg</span></div>
+  <div class="card" data-name="tiktok-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/tiktok-icon.svg" alt=""><span>tiktok-icon.svg</span></div>
+</div>
+
+<h2><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/cpp-icon.svg" alt=""> Языки программирования</h2>
+<div class="grid" data-category>
+  <div class="card" data-name="c-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/c-icon.svg" alt=""><span>c-icon.svg</span></div>
+  <div class="card" data-name="cpp-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/cpp-icon.svg" alt=""><span>cpp-icon.svg</span></div>
+  <div class="card" data-name="python-icon"><img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/python-icon.svg" alt=""><span>python-icon.svg</span></div>
+</div>
+
+<p class="empty" id="empty">Ничего не найдено</p>
+
+<footer>
+  <div class="footer-row">
+    <img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/telegram-icon.svg" alt="">
+    По вопросам — <a href="https://t.me/StrelaTech" target="_blank">t.me/StrelaTech</a>
+  </div>
+  <div class="footer-row">
+    <img src="https://raw.githubusercontent.com/StrelaTech/icons/main/icon/plus-icon.svg" alt="">
+    Предложить иконку — <a href="https://t.me/streladirect_bot" target="_blank">@streladirect_bot</a>
+  </div>
+</footer>
+
+<script>
+  const input = document.getElementById('search');
+  const clearBtn = document.getElementById('clear');
+  const cards = document.querySelectorAll('.card');
+  const headers = document.querySelectorAll('h2');
+  const grids = document.querySelectorAll('.grid');
+  const empty = document.getElementById('empty');
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    clearBtn.classList.toggle('visible', q.length > 0);
+    let visible = 0;
+
+    cards.forEach(card => {
+      const match = card.dataset.name.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    grids.forEach(grid => {
+      const any = [...grid.querySelectorAll('.card')].some(c => c.style.display !== 'none');
+      grid.style.display = any ? '' : 'none';
+      const prev = grid.previousElementSibling;
+      if (prev && prev.tagName === 'H2') prev.style.display = any ? '' : 'none';
+    });
+
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  });
+
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    input.dispatchEvent(new Event('input'));
+    input.focus();
+  });
+</script>
+</body>
+</html>
