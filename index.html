@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG иконки</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --card-bg: #ffffff;
+      --border: #111111;
+      --hover-bg: #f2f2f2;
+      --icon-filter: none;
+      --shadow: 0 0 0 1px #111111;
+    }
+
+    body.dark {
+      --bg: #111111;
+      --text: #ffffff;
+      --card-bg: #111111;
+      --border: #ffffff;
+      --hover-bg: #222222;
+      --icon-filter: invert(1);
+      --shadow: 0 0 0 1px #ffffff;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 20px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .app {
+      max-width: 1280px;
+      width: 100%;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      filter: var(--icon-filter);
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-wrapper .search-icon {
+      position: absolute;
+      left: 12px;
+      width: 18px;
+      height: 18px;
+      filter: var(--icon-filter);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .search-wrapper .search-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .search-wrapper input {
+      padding: 10px 12px 10px 40px;
+      border-radius: 40px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      width: 220px;
+      outline: none;
+    }
+
+    .search-wrapper input:focus {
+      border-width: 2px;
+    }
+
+    .btn-icon {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.2s;
+      padding: 0;
+    }
+
+    .btn-icon:hover {
+      background: var(--hover-bg);
+    }
+
+    .btn-icon .btn-icon-img {
+      width: 22px;
+      height: 22px;
+      filter: var(--icon-filter);
+    }
+
+    .btn-icon .btn-icon-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .btn-text {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-text:hover {
+      background: var(--hover-bg);
+    }
+
+    .btn-text .btn-text-icon {
+      width: 18px;
+      height: 18px;
+      filter: var(--icon-filter);
+    }
+
+    .btn-text .btn-text-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .style-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    .style-toggle button {
+      background: transparent;
+      border: none;
+      padding: 10px 22px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .style-toggle button.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .style-toggle button:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    .stats {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px 8px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.15s, box-shadow 0.2s;
+      cursor: default;
+      box-shadow: var(--shadow);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 0 0 var(--border);
+    }
+
+    .icon-preview {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: var(--icon-filter);
+    }
+
+    .icon-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .icon-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      word-break: break-word;
+      opacity: 0.9;
+      max-width: 100%;
+      line-height: 1.3;
+      padding: 0 4px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .card-actions button {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 6px 10px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .card-actions button:hover {
+      background: var(--hover-bg);
+    }
+
+    .card-actions button .action-icon {
+      width: 12px;
+      height: 12px;
+      filter: var(--icon-filter);
+    }
+
+    .card-actions button .action-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .download-btn .action-icon {
+      width: 13px;
+      height: 13px;
+    }
+
+    .empty-message {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 1.1rem;
+      opacity: 0.6;
+      border: 1px dashed var(--border);
+      border-radius: 40px;
+    }
+
+    .footer-note {
+      margin-top: 50px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .controls {
+        justify-content: space-between;
+      }
+
+      .search-wrapper input {
+        width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        padding: 14px 6px 10px;
+      }
+
+      .icon-preview {
+        width: 36px;
+        height: 36px;
+      }
+
+      .card-actions button {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="top-bar">
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="svg/outline/strela-logo.svg" alt="logo" id="logoIcon">
+        </div>
+        <span>SVG PACK</span>
+      </div>
+
+      <div class="controls">
+        <div class="search-wrapper">
+          <div class="search-icon">
+            <img src="svg/outline/search.svg" alt="" id="searchIcon">
+          </div>
+          <input type="text" id="searchInput" placeholder="Поиск иконок...">
+        </div>
+
+        <div class="style-toggle" id="styleToggle">
+          <button data-style="outline" class="active" id="btnOutline">Outline</button>
+          <button data-style="filled" id="btnFilled">Filled</button>
+        </div>
+
+        <button class="btn-icon" id="themeToggle" title="Сменить тему">
+          <div class="btn-icon-img">
+            <img src="svg/outline/eye.svg" alt="" id="themeIcon">
+          </div>
+        </button>
+
+        <button class="btn-text" id="langToggle">
+          <div class="btn-text-icon">
+            <img src="svg/outline/globe.svg" alt="" id="langIcon">
+          </div>
+          <span id="langLabel">RU</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="stats" id="statsText">outline</div>
+
+    <div class="grid" id="iconGrid"></div>
+
+    <div class="footer-note" id="footerNote">Все иконки доступны в filled и outline</div>
+  </div>
+
+  <script>
+    (function() {
+      const ICON_NAMES = [
+        "alert.svg", "arrow-down.svg", "arrow-left.svg", "arrow-right.svg", "arrow-up.svg",
+        "battery.svg", "bell-off.svg", "bell.svg", "bookmark.svg", "c.svg",
+        "camera.svg", "chat.svg", "check.svg", "clock.svg", "close.svg",
+        "code.svg", "cpp.svg", "database.svg", "download.svg", "edit.svg",
+        "eye.svg", "file.svg", "folder.svg", "github.svg", "globe.svg",
+        "headphones.svg", "heart.svg", "home.svg", "image.svg", "info.svg",
+        "link.svg", "lock.svg", "mail.svg", "map-pin.svg", "menu.svg",
+        "mic.svg", "minus.svg", "monitor.svg", "music.svg", "pause.svg",
+        "phone.svg", "play.svg", "plus.svg", "python.svg", "refresh.svg",
+        "search.svg", "send.svg", "settings.svg", "share.svg", "smartphone.svg",
+        "strela-logo.svg", "tag.svg", "terminal.svg", "trash.svg", "upload.svg",
+        "user.svg", "video.svg", "volume.svg", "wifi.svg", "zap.svg"
+      ];
+
+      const translations = {
+        en: {
+          searchPlaceholder: "Search icons...",
+          outline: "Outline",
+          filled: "Filled",
+          stats: (count, style) => `${count} icons · ${style}`,
+          empty: "No icons found",
+          download: "Download",
+          footer: "All icons available in filled and outline",
+          themeTitle: "Toggle theme",
+          langLabel: "EN"
+        },
+        ru: {
+          searchPlaceholder: "Поиск иконок...",
+          outline: "Контур",
+          filled: "Заливка",
+          stats: (count, style) => `${count} иконок · ${style === 'outline' ? 'контур' : 'заливка'}`,
+          empty: "Иконки не найдены",
+          download: "Скачать",
+          footer: "Все иконки доступны в filled и outline",
+          themeTitle: "Сменить тему",
+          langLabel: "RU"
+        }
+      };
+
+      let currentLang = 'ru';
+      let currentStyle = 'outline';
+      let currentTheme = 'light';
+      let searchQuery = '';
+
+      const grid = document.getElementById('iconGrid');
+      const searchInput = document.getElementById('searchInput');
+      const statsText = document.getElementById('statsText');
+      const footerNote = document.getElementById('footerNote');
+      const langLabel = document.getElementById('langLabel');
+      const themeToggle = document.getElementById('themeToggle');
+      const langToggle = document.getElementById('langToggle');
+      const btnOutline = document.getElementById('btnOutline');
+      const btnFilled = document.getElementById('btnFilled');
+      const styleToggle = document.getElementById('styleToggle');
+      const logoIcon = document.getElementById('logoIcon');
+      const searchIcon = document.getElementById('searchIcon');
+      const themeIcon = document.getElementById('themeIcon');
+      const langIcon = document.getElementById('langIcon');
+
+      function t(key, ...args) {
+        const val = translations[currentLang][key];
+        return typeof val === 'function' ? val(...args) : val;
+      }
+
+      function updateStaticIcons() {
+        logoIcon.src = `svg/${currentStyle}/strela-logo.svg`;
+        searchIcon.src = `svg/${currentStyle}/search.svg`;
+        langIcon.src = `svg/${currentStyle}/globe.svg`;
+        if (currentTheme === 'light') {
+          themeIcon.src = `svg/${currentStyle}/eye.svg`;
+        } else {
+          themeIcon.src = `svg/${currentStyle}/eye.svg`;
+        }
+      }
+
+      function updateTexts() {
+        searchInput.placeholder = t('searchPlaceholder');
+        btnOutline.textContent = t('outline');
+        btnFilled.textContent = t('filled');
+        footerNote.textContent = t('footer');
+        langLabel.textContent = t('langLabel');
+        themeToggle.title = t('themeTitle');
+        updateStats();
+      }
+
+      function updateStats() {
+        const visibleCount = getFilteredIcons().length;
+        statsText.textContent = t('stats', visibleCount, currentStyle);
+      }
+
+      function getFilteredIcons() {
+        const q = searchQuery.trim().toLowerCase();
+        if (!q) return ICON_NAMES;
+        return ICON_NAMES.filter(name => name.toLowerCase().includes(q));
+      }
+
+      function getIconSrc(name) {
+        return `svg/${currentStyle}/${name}`;
+      }
+
+      function renderIcons() {
+        const filtered = getFilteredIcons();
+        if (filtered.length === 0) {
+          grid.innerHTML = `<div class="empty-message">${t('empty')}</div>`;
+          updateStats();
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        filtered.forEach(filename => {
+          const displayName = filename.replace('.svg', '');
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.dataset.name = filename;
+
+          const previewDiv = document.createElement('div');
+          previewDiv.className = 'icon-preview';
+
+          const img = document.createElement('img');
+          img.src = getIconSrc(filename);
+          img.alt = displayName;
+          img.loading = 'lazy';
+          previewDiv.appendChild(img);
+
+          const nameSpan = document.createElement('div');
+          nameSpan.className = 'icon-name';
+          nameSpan.textContent = displayName;
+
+          const actionsDiv = document.createElement('div');
+          actionsDiv.className = 'card-actions';
+
+          const downloadBtn = document.createElement('button');
+          downloadBtn.className = 'download-btn';
+
+          const actionIconDiv = document.createElement('div');
+          actionIconDiv.className = 'action-icon';
+          const actionImg = document.createElement('img');
+          actionImg.src = getIconSrc('download.svg');
+          actionImg.alt = '';
+          actionIconDiv.appendChild(actionImg);
+
+          const downloadText = document.createElement('span');
+          downloadText.textContent = t('download');
+
+          downloadBtn.appendChild(actionIconDiv);
+          downloadBtn.appendChild(downloadText);
+
+          downloadBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const link = document.createElement('a');
+            link.href = getIconSrc(filename);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          });
+
+          actionsDiv.appendChild(downloadBtn);
+          card.appendChild(previewDiv);
+          card.appendChild(nameSpan);
+          card.appendChild(actionsDiv);
+          fragment.appendChild(card);
+        });
+
+        grid.innerHTML = '';
+        grid.appendChild(fragment);
+        updateStats();
+      }
+
+      function applyTheme(theme) {
+        currentTheme = theme;
+        if (theme === 'dark') {
+          document.body.classList.add('dark');
+        } else {
+          document.body.classList.remove('dark');
+        }
+        localStorage.setItem('icon-theme', theme);
+        updateStaticIcons();
+      }
+
+      function toggleTheme() {
+        applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+      }
+
+      function applyStyle(style) {
+        currentStyle = style;
+        if (style === 'outline') {
+          btnOutline.classList.add('active');
+          btnFilled.classList.remove('active');
+        } else {
+          btnFilled.classList.add('active');
+          btnOutline.classList.remove('active');
+        }
+        localStorage.setItem('icon-style', style);
+        updateStaticIcons();
+        renderIcons();
+      }
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('icon-lang', lang);
+        updateTexts();
+        renderIcons();
+      }
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderIcons();
+      });
+
+      themeToggle.addEventListener('click', toggleTheme);
+
+      langToggle.addEventListener('click', () => {
+        applyLanguage(currentLang === 'ru' ? 'en' : 'ru');
+      });
+
+      styleToggle.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const style = btn.dataset.style;
+        if (style && style !== currentStyle) {
+          applyStyle(style);
+        }
+      });
+
+      const savedTheme = localStorage.getItem('icon-theme');
+      const savedStyle = localStorage.getItem('icon-style');
+      const savedLang = localStorage.getItem('icon-lang');
+
+      if (savedLang === 'en' || savedLang === 'ru') {
+        currentLang = savedLang;
+      } else {
+        currentLang = 'ru';
+      }
+
+      if (savedStyle === 'filled' || savedStyle === 'outline') {
+        currentStyle = savedStyle;
+      } else {
+        currentStyle = 'outline';
+      }
+
+      btnOutline.classList.toggle('active', currentStyle === 'outline');
+      btnFilled.classList.toggle('active', currentStyle === 'filled');
+
+      if (savedTheme === 'dark') {
+        currentTheme = 'dark';
+      } else {
+        currentTheme = 'light';
+      }
+      applyTheme(currentTheme);
+
+      updateTexts();
+      renderIcons();
+    })();
+  </script>
+</body>
+</html>
