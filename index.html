@@ -421,18 +421,20 @@
   <script>
     (function() {
       const ICON_NAMES = [
-        "alert.svg", "arrow-down.svg", "arrow-left.svg", "arrow-right.svg", "arrow-up.svg",
-        "battery.svg", "bell-off.svg", "bell.svg", "bookmark.svg", "c.svg",
-        "camera.svg", "chat.svg", "check.svg", "clock.svg", "close.svg",
-        "code.svg", "cpp.svg", "database.svg", "download.svg", "edit.svg",
-        "eye.svg", "file.svg", "folder.svg", "github.svg", "globe.svg",
-        "headphones.svg", "heart.svg", "home.svg", "image.svg", "info.svg",
-        "link.svg", "lock.svg", "mail.svg", "map-pin.svg", "menu.svg",
-        "mic.svg", "minus.svg", "monitor.svg", "music.svg", "pause.svg",
-        "phone.svg", "play.svg", "plus.svg", "python.svg", "refresh.svg",
-        "search.svg", "send.svg", "settings.svg", "share.svg", "smartphone.svg",
-        "strela-logo.svg", "tag.svg", "terminal.svg", "trash.svg", "upload.svg",
-        "user.svg", "video.svg", "volume.svg", "wifi.svg", "zap.svg"
+        "SXvpn-logo.svg", "activity.svg", "alert.svg", "arrow-down.svg", "arrow-left.svg", "arrow-right.svg",
+        "arrow-up.svg", "battery.svg", "bell-off.svg", "bell.svg", "bluetooth.svg", "bookmark.svg",
+        "c.svg", "calendar.svg", "camera.svg", "chat.svg", "check.svg", "clock.svg",
+        "close.svg", "cloud-off.svg", "cloud.svg", "code.svg", "cpp.svg", "credit-card.svg",
+        "database.svg", "download.svg", "edit.svg", "eye.svg", "file.svg", "filter.svg",
+        "fingerprint.svg", "folder.svg", "gauge.svg", "gift.svg", "github.svg", "globe.svg",
+        "headphones.svg", "heart.svg", "home.svg", "image.svg", "info.svg", "key.svg",
+        "link.svg", "lock.svg", "mail.svg", "map-pin.svg", "menu.svg", "mic.svg",
+        "minus.svg", "monitor.svg", "moon.svg", "music.svg", "pause.svg", "phone.svg",
+        "play.svg", "plus.svg", "power.svg", "printer.svg", "python.svg", "refresh.svg",
+        "resize.svg", "ruler.svg", "scale.svg", "search.svg", "send.svg", "server.svg",
+        "settings.svg", "share.svg", "shield.svg", "shopping-cart.svg", "smartphone.svg", "star.svg",
+        "strela-logo.svg", "sun.svg", "tag.svg", "terminal.svg", "timer.svg", "trash.svg",
+        "upload.svg", "user.svg", "video.svg", "volume.svg", "wifi.svg", "zap.svg"
       ];
 
       const translations = {
@@ -486,13 +488,13 @@
       }
 
       function updateStaticIcons() {
-        logoIcon.src = `svg/${currentStyle}/strela-logo.svg`;
-        searchIcon.src = `svg/${currentStyle}/search.svg`;
-        langIcon.src = `svg/${currentStyle}/globe.svg`;
+        logoIcon.src = `${currentStyle}/strela-logo.svg`;
+        searchIcon.src = `${currentStyle}/search.svg`;
+        langIcon.src = `${currentStyle}/globe.svg`;
         if (currentTheme === 'light') {
-          themeIcon.src = `svg/${currentStyle}/eye.svg`;
+          themeIcon.src = `${currentStyle}/eye.svg`;
         } else {
-          themeIcon.src = `svg/${currentStyle}/eye.svg`;
+          themeIcon.src = `${currentStyle}/eye.svg`;
         }
       }
 
@@ -518,7 +520,7 @@
       }
 
       function getIconSrc(name) {
-        return `svg/${currentStyle}/${name}`;
+        return `${currentStyle}/${name}`;
       }
 
       function renderIcons() {
