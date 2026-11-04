@@ -1,0 +1,6 @@
+<!-- gauge.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 14.89A7.5 7.5 0 1 1 20 14.89"/>
+  <line x1="12" y1="12" x2="16.24" y2="7.76"/>
+  <circle cx="12" cy="14" r="1.5"/>
+</svg>
