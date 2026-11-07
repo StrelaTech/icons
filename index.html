@@ -215,6 +215,67 @@
       border-right: 1px solid var(--border);
     }
 
+    .shape-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      overflow: hidden;
+      margin-left: 12px;
+    }
+
+    .shape-toggle button {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .shape-toggle button.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .shape-toggle button:first-child {
+      border-right: 1px solid var(--border);
+    }
+
+    .icon-shape {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: transparent;
+    }
+    .icon-shape img {
+      width: 55%;
+      height: 55%;
+      object-fit: contain;
+      display: block;
+      filter: var(--icon-filter);
+    }
+
+    .icon-shape--circle { border-radius: 50%; }
+    .icon-shape--square { border-radius: 6px; }
+    .icon-shape--rounded { border-radius: 14px; }
+
+    .icon-shape--fill-circle,
+    .icon-shape--fill-square {
+      background: var(--text);
+      border: none;
+    }
+    .icon-shape--fill-circle { border-radius: 50%; }
+    .icon-shape--fill-square { border-radius: 6px; }
+    .icon-shape--fill-circle img,
+    .icon-shape--fill-square img {
+      filter: invert(1);
+    }
+
     .stats {
       font-size: 0.9rem;
       opacity: 0.7;
